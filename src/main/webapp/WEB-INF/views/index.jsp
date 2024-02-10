@@ -8,9 +8,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>ㅎㅇ</title>
+    <title>Spring Boot Auth Board</title>
 </head>
 <body>
-ㅎㅇㅇ
+    <h2>메인 페이지</h2>
+    <a href="/member/save">회원가입</a>
+    <a href="/member/login">로그인</a>
 </body>
 </html>
