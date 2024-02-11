@@ -26,13 +26,12 @@ public class MemberController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody MemberDTO memberDTO, HttpServletRequest request) {
+    public ResponseEntity<?> login(@RequestBody MemberDTO memberDTO, HttpSession session) {
         log.info(String.valueOf(memberDTO));
 
         MemberDTO loginResult = memberService.login(memberDTO);
 
         if (loginResult != null) {
-            HttpSession session = request.getSession();
             session.setAttribute("login", loginResult.getEmail());
             return ResponseEntity.status(HttpStatus.OK).body("로그인 성공");
         } else {
@@ -41,8 +40,7 @@ public class MemberController {
     }
 
     @PostMapping("/logout")
-    public ResponseEntity<?> logout(HttpServletRequest request) {
-        HttpSession session = request.getSession();
+    public ResponseEntity<?> logout(HttpSession session) {
         session.invalidate();
 
         return ResponseEntity.status(HttpStatus.OK).body("로그아웃 성공");
