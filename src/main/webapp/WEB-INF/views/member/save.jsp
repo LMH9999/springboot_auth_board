@@ -17,18 +17,18 @@
 <body>
     <h1>회원가입 폼</h1>
 
-    이메일: <input type="text" id="memberEmail"> <br>
-    비밀번호: <input type="password" id="memberPassword"> <br>
-    이름: <input type="text" id="memberName"> <br>
+    이메일: <input type="text" id="email"> <br>
+    비밀번호: <input type="password" id="password"> <br>
+    이름: <input type="text" id="name"> <br>
     <button id="save-btn">회원가입</button>
 <script>
 
 
     document.getElementById('save-btn').addEventListener('click',function (){
         const memberSaveRequestObj = {
-            memberEmail : $('#memberEmail').val(),
-            memberPassword : $('#memberPassword').val(),
-            memberName : $('#memberName').val()
+            email : $('#email').val(),
+            password : $('#password').val(),
+            name : $('#name').val()
         }
         console.log(memberSaveRequestObj);
 
