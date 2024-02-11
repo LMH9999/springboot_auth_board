@@ -7,4 +7,10 @@
         INSERT INTO tb_member(email, password, name)
         VALUES(#{email}, #{password}, #{name})
     </insert>
+
+    <select id="findByEmail" parameterType="String" resultType="com.study.springboot.member.dto.MemberDTO">
+        SELECT email, password
+        FROM tb_member
+        WHERE email = #{email}
+    </select>
 </mapper>

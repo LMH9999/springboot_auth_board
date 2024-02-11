@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: LMH
-  Date: 2024-02-10
-  Time: 오후 8:28
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -21,9 +14,8 @@
     비밀번호: <input type="password" id="password"> <br>
     이름: <input type="text" id="name"> <br>
     <button id="save-btn">회원가입</button>
+
 <script>
-
-
     document.getElementById('save-btn').addEventListener('click',function (){
         const memberSaveRequestObj = {
             email : $('#email').val(),
@@ -38,11 +30,11 @@
             data: JSON.stringify(memberSaveRequestObj),
             contentType: 'application/json; charset=utf-8',
             success: function (res){
-                console.log(res,'aaa')
-
+                console.log(res)
+                location.href = '/member/login'
             },
             error: function (err){
-                console.log(err,'bbb')
+                console.log(err)
             }
         })
     })

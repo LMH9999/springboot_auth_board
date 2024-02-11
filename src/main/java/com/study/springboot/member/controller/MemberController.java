@@ -8,6 +8,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 @Slf4j
 @RestController
 @RequiredArgsConstructor
@@ -16,9 +19,32 @@ public class MemberController {
     private final MemberService memberService;
 
     @PostMapping("/save")
-    public ResponseEntity<?> save(@RequestBody MemberDTO memberDTO){
+    public ResponseEntity<?> save(@RequestBody MemberDTO memberDTO) {
         log.info(String.valueOf(memberDTO));
         memberService.save(memberDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body("회원가입 성공");
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody MemberDTO memberDTO, HttpServletRequest request) {
+        log.info(String.valueOf(memberDTO));
+
+        MemberDTO loginResult = memberService.login(memberDTO);
+
+        if (loginResult != null) {
+            HttpSession session = request.getSession();
+            session.setAttribute("login", loginResult.getEmail());
+            return ResponseEntity.status(HttpStatus.OK).body("로그인 성공");
+        } else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("로그인 실패");
+        }
+    }
+
+    @PostMapping("/logout")
+    public ResponseEntity<?> logout(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        session.invalidate();
+
+        return ResponseEntity.status(HttpStatus.OK).body("로그아웃 성공");
     }
 }
