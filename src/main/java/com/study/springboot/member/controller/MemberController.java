@@ -45,4 +45,6 @@ public class MemberController {
 
         return ResponseEntity.status(HttpStatus.OK).body("로그아웃 성공");
     }
+
+    
 }
