@@ -18,5 +18,6 @@ CREATE TABLE `tb_board`
     `contents` VARCHAR(500) NOT NULL,
     `hits` INT DEFAULT 0,
     `created_time` DATETIME DEFAULT CURRENT_TIMESTAMP,
-    `updated_time` DATETIME DEFAULT CURRENT_TIMESTAMP
+    `updated_time` DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY(email) REFERENCES tb_member(email)
 )

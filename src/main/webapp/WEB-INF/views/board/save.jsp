@@ -17,7 +17,7 @@
 
 <script>
     document.getElementById('save-btn').addEventListener('click',function (){
-        // validationCheck()
+        validationCheck()
 
         const boardSaveRequestObj = {
             email : '${login}',
@@ -41,5 +41,21 @@
         })
     })
 </script>
+    <script>
+        function validationCheck() {
+            const title = $('#title').val()
+            const contents = $('#contents').val();
+
+            if (!title) {
+                alert('제목을 입력해주세요.');
+                return false;
+            }
+            if (!contents) {
+                alert('내용을 입력해주세요');
+                return false;
+            }
+            return true;
+        }
+    </script>
 </body>
 </html>
