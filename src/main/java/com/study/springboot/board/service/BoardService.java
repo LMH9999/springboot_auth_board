@@ -20,4 +20,12 @@ public class BoardService {
     public List<BoardDTO> findAll() {
         return boardMapper.findAll();
     }
+
+    public void updateHits(Long id) {
+        boardMapper.updateHits(id);
+    }
+
+    public BoardDTO findById(Long id) {
+        return boardMapper.findById(id);
+    }
 }

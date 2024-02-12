@@ -13,4 +13,16 @@
         FROM tb_board
         ORDER BY id DESC
     </select>
+
+    <update id="updateHits" parameterType="Long">
+        UPDATE tb_board
+        SET hits = hits+1
+        WHERE id = #{id}
+    </update>
+
+    <select id="findById" parameterType="Long" resultType="com.study.springboot.board.dto.BoardDTO">
+        SELECT id, email, title, contents, hits, created_time, updated_time
+        FROM tb_board
+        WHERE id = #{id}
+    </select>
 </mapper>
