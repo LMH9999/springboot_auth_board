@@ -1,13 +1,12 @@
 package com.study.springboot.board.controller;
 
 import com.study.springboot.board.dto.BoardDTO;
+import com.study.springboot.board.dto.PageDTO;
 import com.study.springboot.board.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,10 +16,16 @@ import java.util.List;
 public class BoardViewController {
     private final BoardService boardService;
 
+
     @GetMapping
-    public String list(Model model) {
-        List<BoardDTO> boardDTOList = boardService.findAll();
+    public String list(@RequestParam(value = "page", required = false, defaultValue = "1") int page,
+                       Model model) {
+        List<BoardDTO> boardDTOList = boardService.pagingList(page);
+        PageDTO pageDTO = boardService.pagingParam(page);
+
         model.addAttribute("boardList", boardDTOList);
+        model.addAttribute("paging", pageDTO);
+
         return "board/list";
     }
 
@@ -29,11 +34,12 @@ public class BoardViewController {
         return "board/save";
     }
 
-    @GetMapping("/{id}")
-    public String detail(@PathVariable Long id, Model model) {
+    @GetMapping("/{id}/{page}")
+    public String detail(@PathVariable Long id,@PathVariable int page, Model model) {
         boardService.updateHits(id);
         BoardDTO boardDTO = boardService.findById(id);
         model.addAttribute("board", boardDTO);
+        model.addAttribute("page",page);
         return "board/detail";
     }
 

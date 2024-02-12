@@ -41,7 +41,7 @@
 <script>
     const listReq = () => {
         console.log('목록 요청')
-        location.href = '/board'
+        location.href = '/board/?page=${page}'
     }
     const updateReq = () => {
         console.log('수정 요청')
