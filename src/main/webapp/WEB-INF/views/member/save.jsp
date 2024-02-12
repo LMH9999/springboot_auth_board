@@ -12,20 +12,20 @@
 <body>
 
 <div class="container mt-5">
-    <h1>회원가입 폼</h1>
+    <h1>회원가입 폼</h1><br>
 
     <form>
         <div class="form-group">
             <label for="email">이메일</label>
-            <input type="text" class="form-control" id="email" onblur="emailCheck()" placeholder="이메일을 입력하세요"><br>
+            <input type="text" class="form-control" id="email" onblur="emailFormCheck()" placeholder="이메일을 입력하세요">
             <span id="check-result"></span>
         </div>
-        
+        <br>
         <div class="form-group">
             <label for="password">비밀번호</label>
-            <input type="password" class="form-control" id="password" placeholder="비밀번호를 입력하세요"> <br>
+            <input type="password" class="form-control" id="password" placeholder="비밀번호를 입력하세요">
         </div>
-
+        <br>
         <div class="form-group">
             <label for="name">이름</label>
             <input type="text" class="form-control" id="name" placeholder="이름을 입력하세요">
@@ -37,6 +37,8 @@
 
 <script>
     document.getElementById('save-btn').addEventListener('click',function (){
+        validationCheck()
+
         const memberSaveRequestObj = {
             email : $('#email').val(),
             password : $('#password').val(),
@@ -60,9 +62,23 @@
     })
 </script>
 <script>
+    const emailFormCheck = () => {
+        const pattern = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-za-z0-9\-]+/;
+        const email = $('#email').val()
+        const checkResult = $('#check-result')
+
+        if(pattern.test(email) === false) {
+            checkResult.html('이메일 형식에 맞지 않습니다.')
+            checkResult.css('color', 'red')
+        }
+        else {
+            emailCheck()
+        }
+    }
     const emailCheck = () => {
         const email = $('#email').val()
         const checkResult = $('#check-result')
+
         console.log("입력값: ", email)
 
         $.ajax({
@@ -87,6 +103,27 @@
                 console.log("에러발생",err)
             }
         })
+    }
+</script>
+<script>
+    function validationCheck() {
+        const email = $('#email').val()
+        const password = $('#password').val();
+        const name = $('#name').val()
+
+        if (!email) {
+            alert('이메일을 확인해주세요.');
+            return false;
+        }
+        if (!password) {
+            alert('비밀번호를 입력해주세요');
+            return false;
+        }
+        if (!name) {
+            alert('이름을 입력해주세요');
+            return false;
+        }
+        return true;
     }
 </script>
 </body>
