@@ -9,3 +9,14 @@ CREATE TABLE `tb_member`
     `password` VARCHAR(255) NOT NULL,
     `name` VARCHAR(255) NOT NULL
 );
+
+CREATE TABLE `tb_board`
+(
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `email` VARCHAR(255) NOT NULL,
+    `title` VARCHAR(255) NOT NULL,
+    `contents` VARCHAR(500) NOT NULL,
+    `hits` INT DEFAULT 0,
+    `created_time` DATETIME DEFAULT CURRENT_TIMESTAMP,
+    `updated_time` DATETIME DEFAULT CURRENT_TIMESTAMP
+)
