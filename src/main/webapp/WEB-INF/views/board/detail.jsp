@@ -51,7 +51,21 @@
     const deleteReq = () => {
         console.log("삭제 요청")
         const id = '${board.id}'
-        location.href = '/board/delete/' + id
+
+        $.ajax({
+            type: 'delete',
+            url: '/board/delete',
+            data: {
+                'id': id
+            },
+            success: function (res){
+                console.log(res)
+                location.href = '/board'
+            },
+            error: function (err){
+                console.log(err)
+            }
+        })
     }
 </script>
 </body>

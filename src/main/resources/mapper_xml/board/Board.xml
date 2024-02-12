@@ -31,4 +31,9 @@
         SET title = #{title}, contents = #{contents}
         WHERE id = #{id}
     </update>
+
+    <delete id="delete" parameterType="Long">
+        DELETE FROM tb_board
+        WHERE id = #{id}
+    </delete>
 </mapper>
