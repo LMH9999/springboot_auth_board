@@ -38,4 +38,16 @@ public class MemberService {
         }
 
     }
+
+    public String emailCheck(String email) {
+        MemberDTO checkMember = memberMapper.findByEmail(email);
+        if (checkMember != null) {
+            //조회 결과가 있다 -> 사용할 수 없다.
+            return null;
+        } else {
+            //조회 결과가 없다 -> 사용할 수 있다.
+            return "ok";
+        }
+
+    }
 }

@@ -46,5 +46,9 @@ public class MemberController {
         return ResponseEntity.status(HttpStatus.OK).body("로그아웃 성공");
     }
 
-    
+    @PostMapping("/email-check")
+    public ResponseEntity<?> emailCheck(@RequestParam("email") String email){
+        String checkResult = memberService.emailCheck(email);
+        return ResponseEntity.status(HttpStatus.OK).body(checkResult);
+    }
 }
