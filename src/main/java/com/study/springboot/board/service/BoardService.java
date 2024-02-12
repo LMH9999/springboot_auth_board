@@ -28,4 +28,8 @@ public class BoardService {
     public BoardDTO findById(Long id) {
         return boardMapper.findById(id);
     }
+
+    public void update(BoardDTO boardDTO) {
+        boardMapper.update(boardDTO);
+    }
 }

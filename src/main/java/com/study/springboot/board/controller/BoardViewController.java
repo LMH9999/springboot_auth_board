@@ -25,7 +25,7 @@ public class BoardViewController {
     }
 
     @GetMapping("/save")
-    public String saveForm(){
+    public String saveForm() {
         return "board/save";
     }
 
@@ -35,5 +35,12 @@ public class BoardViewController {
         BoardDTO boardDTO = boardService.findById(id);
         model.addAttribute("board", boardDTO);
         return "board/detail";
+    }
+
+    @GetMapping("/update/{id}")
+    public String updateForm(@PathVariable Long id, Model model) {
+        BoardDTO boardDTO = boardService.findById(id);
+        model.addAttribute("board", boardDTO);
+        return "board/update";
     }
 }

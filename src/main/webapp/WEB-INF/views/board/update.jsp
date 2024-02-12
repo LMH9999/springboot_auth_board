@@ -1,45 +1,48 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>글작성</title>
+    <title>글수정</title>
     <script
             src="https://code.jquery.com/jquery-3.7.1.min.js"
             integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
             crossorigin="anonymous"></script>
 </head>
 <body>
-    <h1>글작성</h1>
+    <h1>글수정</h1><br>
+
+    <input type="hidden" name="id" value="${board.id}">
+    <input type="hidden" id="writer" value="${board.email}">
+    제목: <input type="text" id="title" value="${board.title}"> <br>
+    내용: <textarea id="contents" cols="30" rows="10">${board.contents}</textarea> <br>
+    <input type="hidden" id="hits" value="${board.hits}">
     <br>
-    제목: <input type="text" id="title"> <br>
-    내용: <textarea id="contents" cols="30" rows="10"></textarea> <br>
-<%--    file: <input type="file" name="file"> <br>--%>
-    <button id="save-btn">글작성</button>
+    <input type="button" value="글수정" onclick="update()">
 
 <script>
-    document.getElementById('save-btn').addEventListener('click',function (){
+    const update = () => {
         validationCheck()
 
-        const boardSaveRequestObj = {
-            email : '${login}',
+        const boardUpdateRequestObj = {
+            id : '${board.id}',
             title : $('#title').val(),
             contents : $('#contents').val()
         }
-        console.log(boardSaveRequestObj);
+        console.log(boardUpdateRequestObj);
 
         $.ajax({
-            type: 'post',
-            url: '/board/save',
-            data: JSON.stringify(boardSaveRequestObj),
+            type: 'put',
+            url: '/board/update',
+            data: JSON.stringify(boardUpdateRequestObj),
             contentType: 'application/json; charset=utf-8',
             success: function (res){
                 console.log(res)
-                location.href = '/board'
+                location.href = '/board/${board.id}'
             },
             error: function (err){
                 console.log(err)
             }
         })
-    })
+    }
 </script>
 <script>
     function validationCheck() {

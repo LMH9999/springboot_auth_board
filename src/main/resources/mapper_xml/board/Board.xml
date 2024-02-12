@@ -25,4 +25,10 @@
         FROM tb_board
         WHERE id = #{id}
     </select>
+
+    <update id="update" parameterType="com.study.springboot.board.dto.BoardDTO">
+        UPDATE tb_board
+        SET title = #{title}, contents = #{contents}
+        WHERE id = #{id}
+    </update>
 </mapper>
