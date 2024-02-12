@@ -8,4 +8,9 @@
         VALUES(#{email}, #{title}, #{contents})
     </insert>
 
+    <select id="findAll" resultType="com.study.springboot.board.dto.BoardDTO">
+        SELECT id, email, title, contents, hits, created_time, updated_time
+        FROM tb_board
+        ORDER BY id DESC
+    </select>
 </mapper>

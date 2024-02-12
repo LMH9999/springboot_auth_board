@@ -33,7 +33,7 @@
             contentType: 'application/json; charset=utf-8',
             success: function (res){
                 console.log(res)
-                // location.href = '/member/login'
+                location.href = '/board'
             },
             error: function (err){
                 console.log(err)
