@@ -16,12 +16,12 @@
 
     <form>
         <div class="form-group">
-            <label for="email">이메일:</label>
+            <label for="email">이메일</label>
             <input type="text" class="form-control" id="email" placeholder="이메일을 입력하세요">
         </div>
 
         <div class="form-group">
-            <label for="password">비밀번호:</label>
+            <label for="password">비밀번호</label>
             <input type="password" class="form-control" id="password" placeholder="비밀번호를 입력하세요">
         </div>
 

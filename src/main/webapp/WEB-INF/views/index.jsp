@@ -13,12 +13,14 @@
 <body>
 <div class="container mt-3">
     <h2>메인 페이지</h2>
+    <br>
     <c:if test="${login eq null}">
         <a class="btn btn-primary mr-2" href="/member/save">회원가입</a>
         <a class="btn btn-success" href="/member/login">로그인</a>
     </c:if>
     <c:if test="${login ne null}">
-        <button class="btn btn-danger" id="logout-btn" onclick="logout()">로그아웃</button>
+        <button class="btn btn-danger" id="logout-btn" onclick="logout()">로그아웃</button><br><br>
+        <a class="btn btn-secondary" href="/board">게시판</a>
     </c:if>
 </div>
 
