@@ -6,37 +6,40 @@
             src="https://code.jquery.com/jquery-3.7.1.min.js"
             integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
             crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
+<div class="container mt-5">
     <h1>게시글 상세보기</h1> <br>
 
-<table>
-    <tr>
-        <th>title</th>
-        <td>${board.title}</td>
-    </tr>
-    <tr>
-        <th>writer</th>
-        <td>${board.email}</td>
-    </tr>
-    <tr>
-        <th>date</th>
-        <td>${board.createdTime}</td>
-    </tr>
-    <tr>
-        <th>hits</th>
-        <td>${board.hits}</td>
-    </tr>
-    <tr>
-        <th>contents</th>
-        <td>${board.contents}</td>
-    </tr>
-</table>
-    <br>
-<button onclick="listReq()">목록</button>
-<button onclick="updateReq()">수정</button>
-<button onclick="deleteReq()">삭제</button>
-
+    <table class="table">
+        <tr>
+            <th>제목</th>
+            <td>${board.title}</td>
+        </tr>
+        <tr>
+            <th>작성자</th>
+            <td>${board.email}</td>
+        </tr>
+        <tr>
+            <th>게시일</th>
+            <td>${board.createdTime}</td>
+        </tr>
+        <tr>
+            <th>조회수</th>
+            <td>${board.hits}</td>
+        </tr>
+        <tr>
+            <th>내용</th>
+            <td>${board.contents}</td>
+        </tr>
+    </table>
+        <br>
+    <button class="btn btn-primary" onclick="listReq()">목록</button>
+    <button class="btn btn-warning" onclick="updateReq()">수정</button>
+    <button class="btn btn-danger" onclick="deleteReq()">삭제</button>
+</div>
 
 <script>
     const listReq = () => {
@@ -46,7 +49,8 @@
     const updateReq = () => {
         console.log('수정 요청')
         const id = '${board.id}'
-        location.href = '/board/update/' + id
+        const page = '${page}'
+        location.href = '/board/update/' + id + '/' + page
     }
     const deleteReq = () => {
         console.log("삭제 요청")

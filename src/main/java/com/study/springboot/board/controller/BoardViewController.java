@@ -35,7 +35,7 @@ public class BoardViewController {
     }
 
     @GetMapping("/{id}/{page}")
-    public String detail(@PathVariable Long id,@PathVariable int page, Model model) {
+    public String detail(@PathVariable Long id, @PathVariable int page, Model model) {
         boardService.updateHits(id);
         BoardDTO boardDTO = boardService.findById(id);
         model.addAttribute("board", boardDTO);
@@ -43,10 +43,11 @@ public class BoardViewController {
         return "board/detail";
     }
 
-    @GetMapping("/update/{id}")
-    public String updateForm(@PathVariable Long id, Model model) {
+    @GetMapping("/update/{id}/{page}")
+    public String updateForm(@PathVariable Long id, @PathVariable int page, Model model) {
         BoardDTO boardDTO = boardService.findById(id);
         model.addAttribute("board", boardDTO);
+        model.addAttribute("page", page);
         return "board/update";
     }
 }
