@@ -24,7 +24,7 @@
         </tr>
         <tr>
             <th>게시일</th>
-            <td>${board.createdTime}</td>
+            <td>${board.createdTime.toLocalDate()}</td>
         </tr>
         <tr>
             <th>조회수</th>

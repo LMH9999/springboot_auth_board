@@ -35,7 +35,7 @@
                     <td>${board.id}</td>
                     <td><a href="/board/${board.id}/${paging.page}">${board.title}</a></td>
                     <td>${board.email}</td>
-                    <td>${board.updatedTime}</td>
+                    <td>${board.createdTime.toLocalDate()}</td>
                     <td>${board.hits}</td>
                 </tr>
             </c:forEach>
@@ -73,8 +73,5 @@
         </c:choose>
     </div>
 </div>
-<script>
-
-</script>
 </body>
 </html>
