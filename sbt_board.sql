@@ -21,3 +21,13 @@ CREATE TABLE `tb_board`
     `updated_time` DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY(email) REFERENCES tb_member(email)
 )
+
+CREATE TABLE `tb_comment`
+(
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `board_id` INT NOT NULL,
+    `writer` VARCHAR(255) NOT NULL,
+    `contents` VARCHAR(500) NOT NULL,
+    `created_time` DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY(boardId) REFERENCES tb_board(id)
+)

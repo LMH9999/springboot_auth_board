@@ -44,7 +44,11 @@
             <td style="overflow: auto;height: 100px"><pre><c:out value="${board.contents}"/></pre></td>
         </tr>
     </table>
-
+</div>
+<div>
+    <input type="text" id="writer" placeholder="작성자">
+    <input type="text" id="contents" placeholder="내용">
+    <button id="comment-write-btn" onclick="commentWrite()">댓글작성</button>
 </div>
 
 <script>
@@ -74,6 +78,29 @@
             },
             error: function (err){
                 console.log(err)
+            }
+        })
+    }
+    const commentWrite = () => {
+        const commentSaveRequestObj = {
+            writer : $('#writer').val(),
+            contents :  $('#contents').val(),
+            boardId : '${board.id}'
+        }
+        console.log(commentSaveRequestObj)
+
+        $.ajax({
+            type: 'post',
+            url: '/comment/save',
+            data: JSON.stringify(commentSaveRequestObj),
+            contentType: 'application/json; charset=utf-8',
+            success: function (res){
+                console.log(res)
+                console.log("댓글 작성 성공")
+            },
+            error: function (err){
+                console.log(err)
+                console.log("댓글 작성 실패")
             }
         })
     }
