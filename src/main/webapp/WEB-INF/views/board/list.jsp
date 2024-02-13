@@ -11,6 +11,7 @@
             crossorigin="anonymous"></script>
 </head>
 <body>
+<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
 <div class="container mt-5">
     <h1>게시판</h1> <br>

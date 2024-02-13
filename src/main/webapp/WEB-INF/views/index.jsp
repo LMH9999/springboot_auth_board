@@ -11,6 +11,8 @@
             crossorigin="anonymous"></script>
 </head>
 <body>
+<jsp:include page="/WEB-INF/views/common/header.jsp"/>
+
 <div class="container mt-3">
     <h2>메인 페이지</h2>
     <br>

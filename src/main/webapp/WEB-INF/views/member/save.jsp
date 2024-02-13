@@ -10,6 +10,7 @@
             crossorigin="anonymous"></script>
 </head>
 <body>
+<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
 <div class="container mt-5">
     <h1>회원가입 폼</h1><br>

@@ -10,6 +10,7 @@
             crossorigin="anonymous"></script>
 </head>
 <body>
+<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
 <div class="container mt-5">
     <h2>로그인 화면</h2>
