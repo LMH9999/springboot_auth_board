@@ -45,11 +45,39 @@
         </tr>
     </table>
 </div>
-<div>
-<%--    <input type="text" id="writer" placeholder="작성자">--%>
-    <input type="text" id="contents" placeholder="내용">
-    <button id="comment-write-btn" onclick="commentWrite()">댓글작성</button>
+
+<div class="container mt-4">
+    <div class="input-group">
+        <input type="text" id="contents" class="form-control" placeholder="댓글 내용을 작성해주세요.">
+        <div class="input-group-append">
+            <button id="comment-write-btn" class="btn btn-secondary" onclick="commentWrite()">댓글 작성</button>
+        </div>
+    </div>
+    <br>
+    <div id="comment-list">
+        <table class="table">
+            <thead>
+            <tr align="center">
+                <th style="width: 5%">번호</th>
+                <th style="width: 20%;">작성자</th>
+                <th style="width: 50%;">댓글 내용</th>
+                <th style="width: 20%;">작성 시간</th>
+            </tr>
+            </thead>
+            <tbody>
+            <c:forEach items="${commentList}" var="comment">
+                <tr align="center">
+                    <td>${comment.id}</td>
+                    <td>${comment.writer}</td>
+                    <td align="left">${comment.contents}</td>
+                    <td>${comment.createdTime}</td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
+    </div>
 </div>
+
 
 <script>
     const listReq = () => {
@@ -112,9 +140,25 @@
             url: '/comment/save',
             data: JSON.stringify(commentSaveRequestObj),
             contentType: 'application/json; charset=utf-8',
-            success: function (res){
-                console.log(res)
+            success: function (commentList){
+                console.log(commentList)
                 console.log("댓글 작성 성공")
+                let output = '<table class="table">';
+                output += '<tr  align="center"><th style="width: 5%">번호</th>';
+                output += '<th style="width: 20%">작성자</th>';
+                output += '<th style="width: 50%">댓글 내용</th>';
+                output += '<th style="width: 20%">작성 시간</th></tr>';
+                for(let i in commentList){
+                    output += '<tr align="center">';
+                    output += "<td>"+commentList[i].id+"</td>";
+                    output += "<td>"+commentList[i].writer+"</td>";
+                    output += "<td align='left'>"+commentList[i].contents+"</td>";
+                    output += "<td>"+commentList[i].createdTime+"</td>";
+                    output += "</tr>";
+                }
+                output += "</table>";
+                $('#comment-list').html(output)
+                $('#contents').val('')
             },
             error: function (err){
                 console.log(err)

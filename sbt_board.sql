@@ -29,5 +29,5 @@ CREATE TABLE `tb_comment`
     `writer` VARCHAR(255) NOT NULL,
     `contents` VARCHAR(500) NOT NULL,
     `created_time` DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY(boardId) REFERENCES tb_board(id)
+    FOREIGN KEY(board_id) REFERENCES tb_board(id)
 )

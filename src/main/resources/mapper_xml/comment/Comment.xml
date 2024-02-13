@@ -9,4 +9,10 @@
         VALUES(#{writer}, #{contents}, #{boardId})
     </insert>
 
+    <select id="findAll" parameterType="Long" resultType="com.study.springboot.board.dto.CommentDTO">
+        SELECT id, board_id, writer, contents, created_time
+        FROM tb_comment
+        WHERE board_id = #{boardId}
+        ORDER BY id DESC
+    </select>
 </mapper>

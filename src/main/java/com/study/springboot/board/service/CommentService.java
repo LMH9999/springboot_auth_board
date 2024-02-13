@@ -5,6 +5,8 @@ import com.study.springboot.board.mapper.CommentMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class CommentService {
@@ -12,5 +14,9 @@ public class CommentService {
 
     public void save(CommentDTO commentDTO) {
         commentMapper.save(commentDTO);
+    }
+
+    public List<CommentDTO> findAll(Long boardId) {
+        return commentMapper.findAll(boardId);
     }
 }

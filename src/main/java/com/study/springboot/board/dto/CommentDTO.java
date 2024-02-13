@@ -19,5 +19,5 @@ public class CommentDTO {
     private String writer;
     @NotBlank
     private String contents;
-    private Timestamp createdTime;
+    private String createdTime;
 }

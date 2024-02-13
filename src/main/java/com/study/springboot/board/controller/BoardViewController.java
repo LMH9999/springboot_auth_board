@@ -1,8 +1,10 @@
 package com.study.springboot.board.controller;
 
 import com.study.springboot.board.dto.BoardDTO;
+import com.study.springboot.board.dto.CommentDTO;
 import com.study.springboot.board.dto.PageDTO;
 import com.study.springboot.board.service.BoardService;
+import com.study.springboot.board.service.CommentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +17,7 @@ import java.util.List;
 @RequestMapping("/board")
 public class BoardViewController {
     private final BoardService boardService;
-
+    private final CommentService commentService;
 
     @GetMapping
     public String list(@RequestParam(value = "page", required = false, defaultValue = "1") int page,
@@ -40,6 +42,10 @@ public class BoardViewController {
         BoardDTO boardDTO = boardService.findById(id);
         model.addAttribute("board", boardDTO);
         model.addAttribute("page",page);
+
+        List<CommentDTO> commentDTOList = commentService.findAll(id);
+        model.addAttribute("commentList", commentDTOList);
+
         return "board/detail";
     }
 
