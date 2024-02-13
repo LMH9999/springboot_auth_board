@@ -46,7 +46,7 @@
     </table>
 </div>
 <div>
-    <input type="text" id="writer" placeholder="작성자">
+<%--    <input type="text" id="writer" placeholder="작성자">--%>
     <input type="text" id="contents" placeholder="내용">
     <button id="comment-write-btn" onclick="commentWrite()">댓글작성</button>
 </div>
@@ -81,9 +81,27 @@
             }
         })
     }
+
+    function validationCheck() {
+        const writer = '${login}'
+        const contents = $('#contents').val();
+
+        if (!writer) {
+            alert('댓글은 로그인 후 작성할 수 있습니다.');
+            return false;
+        }
+        if (!contents) {
+            alert('댓글 내용을 입력해주세요.');
+            return false;
+        }
+        return true;
+    }
+
     const commentWrite = () => {
+        validationCheck()
+
         const commentSaveRequestObj = {
-            writer : $('#writer').val(),
+            writer : '${login}',
             contents :  $('#contents').val(),
             boardId : '${board.id}'
         }

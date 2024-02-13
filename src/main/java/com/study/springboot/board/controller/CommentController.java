@@ -4,9 +4,9 @@ import com.study.springboot.board.dto.CommentDTO;
 import com.study.springboot.board.service.CommentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Slf4j
@@ -17,8 +17,8 @@ public class CommentController {
     private final CommentService commentService;
 
     @PostMapping("/save")
-    public @ResponseBody List<CommentDTO> save(@RequestBody CommentDTO commentDTO) {
-        System.out.println("commentDTO = " + commentDTO);
+    public @ResponseBody List<CommentDTO> save(@Valid @RequestBody CommentDTO commentDTO) {
+        commentService.save(commentDTO);
         return null;
     }
 }
