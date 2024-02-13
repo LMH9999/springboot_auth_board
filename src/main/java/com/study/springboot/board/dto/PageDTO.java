@@ -12,4 +12,6 @@ public class PageDTO {
     private int maxPage;
     private int startPage;
     private int endPage;
+    private int count;
+    private int limit;
 }

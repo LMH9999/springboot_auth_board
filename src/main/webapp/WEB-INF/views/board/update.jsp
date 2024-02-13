@@ -25,8 +25,11 @@
     </div>
     <input type="hidden" id="hits" value="${board.hits}">
     <br>
-    <input type="button" class="btn btn-primary"  value="글수정" onclick="update()">
-    <button class="btn btn-danger" onclick="location.href='/board/${board.id}/${page}'">취소</button>
+    <div class="d-flex justify-content-center mb-3">
+        <input type="button" class="btn btn-primary"  value="글수정" onclick="update()">&nbsp;
+        <button class="btn btn-danger" onclick="location.href='/board/${board.id}/${page}'">취소</button>
+    </div>
+
 </div>
 <script>
     const update = () => {
@@ -46,7 +49,7 @@
             contentType: 'application/json; charset=utf-8',
             success: function (res){
                 console.log(res)
-                location.href = '/board/${board.id}'
+                location.href = '/board/${board.id}/${page}'
             },
             error: function (err){
                 console.log(err)

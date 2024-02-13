@@ -21,20 +21,24 @@
     <div>
         <table class="table">
             <thead>
-            <tr>
-                <th>id</th>
-                <th>제목</th>
-                <th>글쓴이</th>
-                <th>게시일</th>
-                <th>조회수</th>
+            <tr align="center">
+                <th style="width: 5%">번호</th>
+                <th style="width: 20%;">글쓴이</th>
+                <th style="width: 50%">제목</th>
+                <th style="width: 10%">게시일</th>
+                <th style="width: 7%">조회수</th>
             </tr>
             </thead>
             <tbody>
-            <c:forEach items="${boardList}" var="board">
-                <tr>
-                    <td>${board.id}</td>
-                    <td><a href="/board/${board.id}/${paging.page}">${board.title}</a></td>
+            <c:forEach items="${boardList}" var="board" varStatus="loop">
+                <tr align="center">
+                    <td>${paging.count - ((paging.page - 1) * paging.limit + loop.index)}</td>
                     <td>${board.email}</td>
+                    <td align="left">
+                        <a href="/board/${board.id}/${paging.page}" style="text-decoration: none;color: black;">
+                                ${board.title}
+                        </a>
+                    </td>
                     <td>${board.createdTime.toLocalDate()}</td>
                     <td>${board.hits}</td>
                 </tr>

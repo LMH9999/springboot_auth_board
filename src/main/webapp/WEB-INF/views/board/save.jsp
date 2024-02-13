@@ -21,8 +21,11 @@
         <label for="contents">내용</label>
         <textarea class="form-control" id="contents" cols="30" rows="10" placeholder="내용을 입력해주세요."></textarea>
     </div>
-    <button type="button" class="btn btn-primary" id="save-btn">글작성</button>
-    <button class="btn btn-danger" onclick="location.href='/board'">취소</button>
+    <div class="d-flex justify-content-center mb-3">
+        <button type="button" class="btn btn-primary" id="save-btn">글작성</button>&nbsp;
+        <button class="btn btn-danger" onclick="location.href='/board'">취소</button>
+    </div>
+
 </div>
 <script>
     document.getElementById('save-btn').addEventListener('click',function (){

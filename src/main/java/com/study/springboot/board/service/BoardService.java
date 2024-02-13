@@ -67,6 +67,8 @@ public class BoardService {
         pageDTO.setMaxPage(maxPage);
         pageDTO.setStartPage(startPage);
         pageDTO.setEndPage(endPage);
+        pageDTO.setCount(boardCount);
+        pageDTO.setLimit(pageLimit);
         return pageDTO;
     }
 }

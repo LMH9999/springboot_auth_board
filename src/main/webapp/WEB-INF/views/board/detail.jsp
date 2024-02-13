@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -32,13 +33,16 @@
         </tr>
         <tr>
             <th>내용</th>
-            <td>${board.contents}</td>
+            <td style="overflow: auto;height: 100px"><pre><c:out value="${board.contents}"/></pre></td>
         </tr>
     </table>
         <br>
-    <button class="btn btn-primary" onclick="listReq()">목록</button>
-    <button class="btn btn-warning" onclick="updateReq()">수정</button>
-    <button class="btn btn-danger" onclick="deleteReq()">삭제</button>
+    <div class="d-flex justify-content-center mb-3">
+        <button class="btn btn-primary" onclick="listReq()">목록</button>&nbsp;
+        <button class="btn btn-warning" onclick="updateReq()">수정</button>&nbsp;
+        <button class="btn btn-danger" onclick="deleteReq()">삭제</button>
+    </div>
+
 </div>
 
 <script>
