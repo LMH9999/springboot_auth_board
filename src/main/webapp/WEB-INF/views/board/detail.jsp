@@ -16,6 +16,12 @@
 <div class="container mt-5">
     <h1>게시글 상세보기</h1> <br>
 
+    <div class="d-flex justify-content-end mb-3">
+        <button class="btn btn-primary" onclick="listReq()">목록</button>&nbsp;
+        <button class="btn btn-warning" onclick="updateReq()">수정</button>&nbsp;
+        <button class="btn btn-danger" onclick="deleteReq()">삭제</button>
+    </div>
+    <br>
     <table class="table">
         <tr>
             <th>제목</th>
@@ -38,12 +44,6 @@
             <td style="overflow: auto;height: 100px"><pre><c:out value="${board.contents}"/></pre></td>
         </tr>
     </table>
-        <br>
-    <div class="d-flex justify-content-center mb-3">
-        <button class="btn btn-primary" onclick="listReq()">목록</button>&nbsp;
-        <button class="btn btn-warning" onclick="updateReq()">수정</button>&nbsp;
-        <button class="btn btn-danger" onclick="deleteReq()">삭제</button>
-    </div>
 
 </div>
 
